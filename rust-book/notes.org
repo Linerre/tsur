@@ -35,8 +35,10 @@ Can be used to
 1. [[https://doc.rust-lang.org/book/ch10-01-syntax.html#in-struct-definitions][In struct definitions]]
 2. [[https://doc.rust-lang.org/book/ch10-01-syntax.html#in-enum-definitions][In enum definitions]]
 3. [[https://doc.rust-lang.org/book/ch10-01-syntax.html#in-method-definitions][In method definitions]]
+
    A generic type ~Point<T>~ with a method that specifies a concrete type ~impl Point<f32>~
-    will result in only that concrete type, ~f32~, can call this method.
+   will result in only that concrete type, ~f32~, can call this method.
+
 There can be *two* generics in a ~struct~
 #+BEGIN_SRC rust
 struct Point<T, U> {
@@ -55,7 +57,7 @@ enum Result<T, E> {
 #+BEGIN_QUOTE
 This definition makes it convenient to use the ~Result~ enum anywhere we have an operation that might succeed (return a value of some type ~T~) or fail (return an error of some type ~E~).
 #+END_QUOTE
-** type parameter
+** Type Parameter
 *** Syntax
 ~T~ is prefered as a convention
 #+BEGIN_QUOTE
