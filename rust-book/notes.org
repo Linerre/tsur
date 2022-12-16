@@ -1,0 +1,75 @@
+#+title: Notes on Rust Programming Language, The
+#+author: Errenil <errelinaaron@gmail.com>
+
+* 10. Generic Types, Traits, and Lifetimes
+** Traits
+*** Syntax
+#+BEGIN_SRC rust
+// can drop pub to make the trait private
+pub trait TraitName {// trait name is by convention in CamelCase
+    fn method_name(para); // should have the return type also specified
+    // other methods, each ending with `;`
+}
+
+// implementing trait for a type
+impl TraitName for type_name {
+    fn method_name(para) { // should have the return type also specified
+        // method body
+    }
+}
+#+END_SRC
+*** Usage
+Can be used to
+1. *define behavior* in a generic way
+2. combine with generic types to *constrain a generic type* to accept only those types that have a particular behavior, as opposed to just any type
+*** Extracts
+#+BEGIN_QUOTE
+1. A /trait/ defines functionality a particular type has and can share with other types.
+2. A type’s *behavior consists of the methods we can call on that type*. Different types share the same behavior if we can call the same methods on all of those types.
+3. Each type implementing this trait *must provide its own custom behavior* for the body of the method.
+4. One restriction to note is that we can implement a trait on a type *only if* at least one of the trait or the type is *local to our crate*.
+   If both trait and type come from, say, ~std~ library, then trait can't be implemented for type
+#+END_QUOTE
+** Generic Types (Generics)
+*** Usage
+1. [[https://doc.rust-lang.org/book/ch10-01-syntax.html#in-struct-definitions][In struct definitions]]
+2. [[https://doc.rust-lang.org/book/ch10-01-syntax.html#in-enum-definitions][In enum definitions]]
+3. [[https://doc.rust-lang.org/book/ch10-01-syntax.html#in-method-definitions][In method definitions]]
+   A generic type ~Point<T>~ with a method that specifies a concrete type ~impl Point<f32>~
+    will result in only that concrete type, ~f32~, can call this method.
+There can be *two* generics in a ~struct~
+#+BEGIN_SRC rust
+struct Point<T, U> {
+    x: T,
+    y: U,
+}
+// T and U can be same or different types
+
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+// T and E here are just labels for marking different types.
+// One can also use A and B, but it's not the convention.
+#+END_SRC
+#+BEGIN_QUOTE
+This definition makes it convenient to use the ~Result~ enum anywhere we have an operation that might succeed (return a value of some type ~T~) or fail (return an error of some type ~E~).
+#+END_QUOTE
+** type parameter
+*** Syntax
+~T~ is prefered as a convention
+#+BEGIN_QUOTE
+You can use any identifier as a type parameter name. But we’ll use ~T~ because, by convention, type parameter names in Rust are short, often just a letter, and Rust’s type-naming convention is CamelCase. Short for “type,” ~T~ is the default choice of most Rust programmers.
+#+END_QUOTE
+
+#+BEGIN_SRC rust
+// generic types
+fn my_fn<T>(list: &[T])
+//      ^^^ declare T first, then use it in the parameter list
+#+END_SRC
+*** Type Annotation
+~T~ can also be associated with a type annotation
+#+BEGIN_SRC rust
+fn my_fn<T: std::cmp::PartialOld>(list: &[T])
+//          ^^^^^^^^^^^^^^^^^^^^ type annotation
+#+END_SRC
