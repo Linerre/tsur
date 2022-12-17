@@ -17,6 +17,16 @@ impl TraitName for type_name {
         // method body
     }
 }
+
+// Traits as parameters
+pub fn notify(item: &impl TraitName) {
+    println!("Item can call any method under TraitName {}", item.trait_method());
+}
+
+// The above is syntax sugar for the below
+pub fn notify<T: TraitName>(item: &T) {
+    println!("Item can call any method under TraitName {}", item.trait_method());
+}
 #+END_SRC
 *** Usage
 Can be used to
@@ -75,3 +85,26 @@ fn my_fn<T>(list: &[T])
 fn my_fn<T: std::cmp::PartialOld>(list: &[T])
 //          ^^^^^^^^^^^^^^^^^^^^ type annotation
 #+END_SRC
+** Lifetimes
+It's also a kind of generic.
+#+BEGIN_QUOTE
+1. Every reference in Rust has a lifetime, which is the scope for which that reference is valid
+2. We *only must annotate types when multiple types are possible*. In a similar way, we must annotate lifetimes when the lifetimes of references could be related in a few different ways.
+#+END_QUOTE
+*** Syntax
+#+BEGIN_SRC rust
+&i32        // a reference
+&'a i32     // a reference with an explicit lifetime
+&'a mut i32 // a mutable reference with an explicit lifetime
+#+END_SRC
+*** Elision
+#+BEGIN_QUOTE
+The patterns programmed into Rust’s analysis of references are called the /lifetime elision rules/. These aren’t rules for programmers to follow; they’re a set of particular cases that the compiler will consider, and if your code fits these cases, you don’t need to write the lifetimes explicitly.
+#+END_QUOTE
+
+When there is an ambiguity, instead of guessing, the compiler will throw an error.
+Programmers need to resolve the error by adding necessary lifetime annotations.
+
+#+BEGIN_QUOTE
+Lifetimes on function or method parameters are called /input lifetimes/, and lifetimes on return values are called /output lifetimes/.
+#+END_QUOTE
