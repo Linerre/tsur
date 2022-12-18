@@ -108,3 +108,58 @@ Programmers need to resolve the error by adding necessary lifetime annotations.
 #+BEGIN_QUOTE
 Lifetimes on function or method parameters are called /input lifetimes/, and lifetimes on return values are called /output lifetimes/.
 #+END_QUOTE
+
+* 13. Iterators
+** Syntax
+#+BEGIN_SRC rust
+let v1 = vec![1, 2, 3];
+let v1_iter = v1.iter(); // create an iterator from a Vec<T>
+#+END_SRC
+
+#+BEGIN_QUOTE
+In Rust, iterators are /lazy/, meaning they have no effect until you call methods that consume the iterator to use it up.
+#+END_QUOTE
+** Usage
+1. calling the ~next~ method on an iterator *changes* internal state of it:
+   #+BEGIN_QUOTE
+   calling the ~next~ method on an iterator changes internal state that the iterator uses to keep track of where it is in the sequence. In other words, this code /consumes/, or uses up, the iterator. Each call to ~next~ eats up an item from the iterator.
+
+
+   We didn’t need to make v1_iter mutable when we used a ~for~ loop *because the loop took ownership of* ~v1_iter~ and *made it mutable* behind the scenes.
+   #+END_QUOTE
+
+2. values from the calls to ~next~ are *immutable references* to the values in the vector.
+   - use ~into_iter~ to create an iterator that takes ownership of v1 and returns owned values
+   - use ~iter_mut~ to iterate over mutable references
+** Methods
+~Iterator~ trait has some methods implemented in the standard library.
+#+BEGIN_QUOTE
+Find out about these methods by looking in the standard library API documentation for the ~Iterator~ trait.
+#+END_QUOTE
+
+*** Consuming adaptors
+Methods that call ~next~ and therefore *use up* the iterator.
+#+BEGIN_SRC rust
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn iterator_sum() {
+        let v1 = vec![1, 2, 3];
+
+        let v1_iter = v1.iter();
+
+        let total: i32 = v1_iter.sum();
+        //                       ^^^^^ sum() takes ownership of the iterator
+        // so after this line, v1_iter canNOT be called again.
+        assert_eq!(total, 6);
+    }
+}
+#+END_SRC
+
+*** Produce other iterators
+Such methods are called *iterator adaptors*.
+#+BEGIN_QUOTE
+they produce different iterators by changing some aspect of the original iterator.
+#+END_QUOTE
+
+Remember to use ~collect~ method to *consume* the new iterator.
