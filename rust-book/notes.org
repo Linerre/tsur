@@ -1,6 +1,10 @@
 #+title: Notes on Rust Programming Language, The
 #+author: Errenil <errelinaaron@gmail.com>
 
+* 8. Common Collections
+** 8.1 Storing Lists of Values with Vectors
+*** Vector index
+It must be of type ~usize~ which represnts the pointer-size unsigned integer.
 * 10. Generic Types, Traits, and Lifetimes
 ** Traits
 *** Syntax
