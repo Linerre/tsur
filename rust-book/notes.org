@@ -5,6 +5,19 @@
 ** 8.1 Storing Lists of Values with Vectors
 *** Vector index
 It must be of type ~usize~ which represnts the pointer-size unsigned integer.
+#+BEGIN_QUOTE
+This occurs because ~v[i]~ is really parsed as ~*(&v + i)~, or the value at (the memory address of the vector + the index). Because ~&v~ is a memory address, ~i~, the index, must also be a memory address type. Rust represents memory addresses of the type ~usize~.
+#+END_QUOTE
+from: [[https://stackoverflow.com/a/62399119]]
+
+#+BEGIN_SRC rust
+// to access an element in a vec by casting u8 type integers
+let my_vec = vec!["rust", "vector", "usize"];
+let idx: u8 = 0;
+let first_ele = my_vec[idx as usize]; // or
+let first_ele_again = my_vec[usize::from(idx)];
+#+END_SRC
+
 * 10. Generic Types, Traits, and Lifetimes
 ** Traits
 *** Syntax
