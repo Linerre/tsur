@@ -180,3 +180,24 @@ they produce different iterators by changing some aspect of the original iterato
 #+END_QUOTE
 
 Remember to use ~collect~ method to *consume* the new iterator.
+
+
+* 21. Appendix
+** 21.3 C - Derivable Traits
+*** ~Clone~
+#+BEGIN_QUOTE
+...~Clone~ is more general than ~Copy~, ....
+#+END_QUOTE
+from: [[https://doc.rust-lang.org/std/clone/trait.Clone.html][Trait std::clone::Clone]]
+
+#+BEGIN_QUOTE
+~a.clone_from(&b)~ is equivalent to ~a = b.clone()~ in functionality,  but can be overridden to reuse the resources of a to avoid unnecessary allocations.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/std/clone/trait.Clone.html#provided-methods][Provided Methods]]
+
+A type, say, a struct, can be cloned only if all its fields have implemented or derived trait ~Clone~.
+*** ~Copy~
+#+BEGIN_QUOTE
+all programmers can assume that copying a value will be very fast.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/book/appendix-03-derivable-traits.html#clone-and-copy-for-duplicating-values][Clone and Copy for Duplicating Values]]
