@@ -1,6 +1,41 @@
 #+title: Notes on Rust Programming Language, The
 #+author: Errenil <errelinaaron@gmail.com>
 
+* 3. Common Programming Concepts
+** 3.3 Functions
+*** Function's return value/type
+Rust functions by default returns the result of the last expression.
+
+If there isn't such an expression, the function returns ~()~ (a unit type)
+
+#+BEGIN_SRC rust
+// For a fn that has an explicit return type
+fn my_fn(arg: u64) -> u64 {
+    if sth {
+        4
+    }
+    // here you must return another u64 type to satisify the fn's expected return type
+    5
+}
+#+END_SRC
+*** Function's unreachable code
+Any variable/code that appears after the return logic of a fn will become *unreachable*
+#+BEGIN_SRC rust
+fn my_fn(arg: u64) {
+    let mut name = String::new();
+
+    // this fn will return and end after the if-else block
+    if sth {
+        4
+    } else {
+        5
+    }
+
+    // code below is unreachable
+    let name = String::from("hello");
+    name
+}
+#+END_SRC
 * 8. Common Collections
 ** 8.1 Storing Lists of Values with Vectors
 *** Vector index
