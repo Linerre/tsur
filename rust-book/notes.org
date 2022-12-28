@@ -10,7 +10,7 @@ If there isn't such an expression, the function returns ~()~ (a unit type)
 
 #+BEGIN_SRC rust
 // For a fn that has an explicit return type
-fn my_fn(arg: u64) -> u64 {
+fn my_fn(arg: u64) -ji> u64 {
     if sth {
         4
     }
@@ -215,7 +215,9 @@ they produce different iterators by changing some aspect of the original iterato
 #+END_QUOTE
 
 Remember to use ~collect~ method to *consume* the new iterator.
-
+** ~iter()~ vs ~into_iter()~
+- ~iter()~ iterates over ~&T~, that's why ~collect()~ returns a ~Vec<&_>~
+- ~into_iter()~ iterates over ~T~
 
 * 21. Appendix
 ** 21.3 C - Derivable Traits
