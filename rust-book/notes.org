@@ -10,7 +10,7 @@ If there isn't such an expression, the function returns ~()~ (a unit type)
 
 #+BEGIN_SRC rust
 // For a fn that has an explicit return type
-fn my_fn(arg: u64) -ji> u64 {
+fn my_fn(arg: u64) -j> u64 {
     if sth {
         4
     }
@@ -238,3 +238,15 @@ A type, say, a struct, can be cloned only if all its fields have implemented or 
 all programmers can assume that copying a value will be very fast.
 #+END_QUOTE
 from:[[https://doc.rust-lang.org/book/appendix-03-derivable-traits.html#clone-and-copy-for-duplicating-values][Clone and Copy for Duplicating Values]]
+*** ~PartialEq~ and ~Eq~
+Usually a struct or enum cannot be compared using ~=~ directly, unless it
+~#[derive(PartialEq)]~:
+#+BEGIN_QUOTE
+The ~PartialEq~ trait allows you to compare instances of a type to check for equality and enables use of the ~==~ and ~!=~ operators.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/book/appendix-03-derivable-traits.html][PartialEq and Eq for Equality Comparisons]]
+
+#+BEGIN_QUOTE
+This trait can be used with ~#[derive]~. When derived on structs, two instances are equal only if *all* fields are equal, and not equal if any fields are not equal. When derived on enums, two instances are equal if they are the *same variant* and all fields are equal.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/std/cmp/trait.PartialEq.html#derivable][PartialEq: Derivable]]
