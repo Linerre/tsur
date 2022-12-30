@@ -53,6 +53,12 @@ let first_ele = my_vec[idx as usize]; // or
 let first_ele_again = my_vec[usize::from(idx)];
 #+END_SRC
 
+* 9. Error Handling
+** 9.2 Recoverable Errors with Result
+~?~ will cause the expression return either ~OK(val)~ or ~Err(e)~:
+1. ~val~ in ~Ok~ will be passed and assigned to the right of expression;
+2. ~Err(e)~ will terminate the fn and show the ~e~
+from:[[https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator][A Shortcut for Propagating Errors: the ? Operator]]
 * 10. Generic Types, Traits, and Lifetimes
 ** Traits
 *** Syntax
