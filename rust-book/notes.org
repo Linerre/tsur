@@ -52,7 +52,28 @@ let idx: u8 = 0;
 let first_ele = my_vec[idx as usize]; // or
 let first_ele_again = my_vec[usize::from(idx)];
 #+END_SRC
+*** Vector's capacity and length
+When *length* exceeds *capacity*, reallocation happens
+#+BEGIN_QUOTE
+The *capacity* of a vector is the amount of space allocated for *any future elements* that will be added onto the vector. This is not to be confused with the /length/ of a vector, which specifies the number of *actual elements* within the vector.
 
+If a vector’s *length exceeds its capacity*, its capacity will automatically be increased, but its elements will have to be *reallocated*.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/std/vec/struct.Vec.html#capacity-and-reallocation][Capacity and reallocation]]
+
+A new, empty vector will not cause allocation:
+#+BEGIN_QUOTE
+if you construct a ~Vec~ with capacity 0 via ~Vec::new~, ~vec![]~, ~Vec::with_capacity(0)~, or by calling ~shrink_to_fit~ on an empty Vec, it will *not* allocate memory.
+
+~Vec~ will allocate if and only if ~mem::size_of::<T>() * capacity() > 0~.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/std/vec/struct.Vec.html#guarantees][Guarantees]]
+
+Create a ~Vec~ so that adding new elements to it will /not/ cause reallocation:
+#+BEGIN_QUOTE
+~vec![x; n]~, ~vec![a, b, c, d]~, and ~Vec::with_capacity(n)~, will all produce a ~Vec~ with /exactly/ the requested capacity. If ~len == capacity~, (as is the case for the ~vec!~ macro), then a ~Vec<T>~ can be converted to and from a Box<[T]> without reallocating or moving the elements.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/std/vec/struct.Vec.html#guarantees][Guarantees]]
 * 9. Error Handling
 ** 9.2 Recoverable Errors with Result
 ~?~ will cause the expression return either ~OK(val)~ or ~Err(e)~:
