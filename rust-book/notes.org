@@ -74,6 +74,10 @@ Create a ~Vec~ so that adding new elements to it will /not/ cause reallocation:
 ~vec![x; n]~, ~vec![a, b, c, d]~, and ~Vec::with_capacity(n)~, will all produce a ~Vec~ with /exactly/ the requested capacity. If ~len == capacity~, (as is the case for the ~vec!~ macro), then a ~Vec<T>~ can be converted to and from a Box<[T]> without reallocating or moving the elements.
 #+END_QUOTE
 from:[[https://doc.rust-lang.org/std/vec/struct.Vec.html#guarantees][Guarantees]]
+** 8.2 Storing UTF-8 Encoded Text with Strings
+~String~ also has a method ~with_capacity~. If the max length of a string is
+known beforehand: [[https://doc.rust-lang.org/std/string/struct.String.html#method.with_capacity][with_capacity method.]] (See the example)
+
 * 9. Error Handling
 ** 9.2 Recoverable Errors with Result
 ~?~ will cause the expression return either ~OK(val)~ or ~Err(e)~:
@@ -193,6 +197,7 @@ Lifetimes on function or method parameters are called /input lifetimes/, and lif
 #+BEGIN_SRC rust
 let v1 = vec![1, 2, 3];
 let v1_iter = v1.iter(); // create an iterator from a Vec<T>
+// The iterator iters over references to elements in Vec<T>, i.e &item not item
 #+END_SRC
 
 #+BEGIN_QUOTE
