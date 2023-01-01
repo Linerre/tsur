@@ -221,6 +221,26 @@ In Rust, iterators are /lazy/, meaning they have no effect until you call method
 Find out about these methods by looking in the standard library API documentation for the ~Iterator~ trait.
 #+END_QUOTE
 
+*** Consuming Adaptors
+Methods like ~sum()~ will call ~next~ and *consume* the iterator. Such methods are called /consuming adaptors/. Basically, such methods take ownership of the iterator (using it up). As a result, the iterator /cannot/ be used any more, for example, to be chained by other methods after ~sum()~.
+
+*** Iterator adaptors
+Methods like ~map()~ that produce (create) another iterator based on the current one.
+#+BEGIN_QUOTE
+/Iterator adaptors/ are methods defined on the ~Iterator~ trait that don’t consume the iterator. Instead, they produce different iterators by changing some aspect of the original iterator.
+#+END_QUOTE
+
+*** The ~&~ in closures
+~&~ indicates a *value expression~ (rvalue?) in closures. Thus it is /not/ reference.
+#+BEGIN_QUOTE
+A /place expression/ is an expression that represents a memory location. These expressions are paths which refer to local variables, static variables, dereferences (~*expr~), array indexing expressions (~expr[expr]~), field references (~expr.f~) and parenthesized place expressions.
+
+All other expressions are value expressions.
+
+A /value expression/ is an expression that represents an actual value.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/reference/expressions.html#place-expressions-and-value-expressions][Place Expressions and Value Expressions]]
+
 *** Consuming adaptors
 Methods that call ~next~ and therefore *use up* the iterator.
 #+BEGIN_SRC rust
