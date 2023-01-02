@@ -1,0 +1,13 @@
+#+title: Notes on Rust References
+#+author: Errenil <errelinaaron@gmail.com>
+
+* 8. Statements and expressions
+** 8.1. Statements
+** 8.2. Expressions
+*** 8.2.12. Closure expressions
+Clousres prefer to capture their environments using references (borrow) first.
+#+BEGIN_QUOTE
+Without the ~move~ keyword, the closure expression infers how it captures each variable from its environment, *preferring* to capture by /shared reference/, effectively borrowing all outer variables mentioned inside the closure's body.
+#+END_QUOTE
+
+See code snippet: [file:snippets/src/closures.rs]
