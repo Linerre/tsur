@@ -10,7 +10,7 @@ If there isn't such an expression, the function returns ~()~ (a unit type)
 
 #+BEGIN_SRC rust
 // For a fn that has an explicit return type
-fn my_fn(arg: u64) -j> u64 {
+fn my_fn(arg: u64) -> u64 {
     if sth {
         4
     }
