@@ -241,6 +241,7 @@ A /value expression/ is an expression that represents an actual value.
 #+END_QUOTE
 from:[[https://doc.rust-lang.org/reference/expressions.html#place-expressions-and-value-expressions][Place Expressions and Value Expressions]]
 
+Also see [file:snippets/src/closures.rs::15]
 *** Consuming adaptors
 Methods that call ~next~ and therefore *use up* the iterator.
 #+BEGIN_SRC rust

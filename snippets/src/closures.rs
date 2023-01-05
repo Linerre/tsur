@@ -11,8 +11,8 @@ pub fn capture_by_borrow1<'a>(lst: Vec<&'a u8>) -> Vec<&'a u8> { // <-- the fn e
 pub fn capture_by_borrow2(lst: Vec<u8>) -> Vec<u8> { // <-- the fn expects to return T
     let new_lst: Vec<_> = lst.iter() // creates an iterator over &u8 in lst (1st &)
         .filter(|num| **num > 0u8) // <-- but closure captures by ref: &(&u8), (2nd &), thus two **
-        .copied()
-        .collect();
+        .copied()                  // copy the value pointed by &u8; Without this copied() method,
+        .collect();                // in filter(), `&' should be used to create a tmp val (rvalue)
     new_lst
 }
 
