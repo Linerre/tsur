@@ -11,3 +11,17 @@ Without the ~move~ keyword, the closure expression infers how it captures each v
 #+END_QUOTE
 
 See code snippet: [file:snippets/src/closures.rs]
+
+* 10. Types system
+** 10.1. Types
+*** 10.1.11. Closure types
+As to closures, the capturing has an order preference and the 1st is *immutable borrow*:
+#+BEGIN_QUOTE
+The compiler prefers to capture a closed-over variable by immutable borrow, followed by unique immutable borrow (see below), by mutable borrow, and finally by move.
+
+It will pick the first choice of these that is compatible with how the captured variable is used inside the closure body.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/reference/types/closure.html#capture-modes][Capture modes]]
+
+The ~&~ in closures removes a layer of indirection, as disucssed in this thread:
+[[https://stackoverflow.com/questions/72103039/whats-the-purpose-of-mapx-x-in-rust][Stack Overflow: What is the purpose of ".map(|&x| x)" in Rust]]

@@ -231,7 +231,7 @@ Methods like ~map()~ that produce (create) another iterator based on the current
 #+END_QUOTE
 
 *** The ~&~ in closures
-~&~ indicates a *value expression~ (rvalue?) in closures. Thus it is /not/ reference.
+~&~ (such as in ~map(|&x|)~) indicates a *value expression* (rvalue?) in closures. Thus it is /not/ reference.
 #+BEGIN_QUOTE
 A /place expression/ is an expression that represents a memory location. These expressions are paths which refer to local variables, static variables, dereferences (~*expr~), array indexing expressions (~expr[expr]~), field references (~expr.f~) and parenthesized place expressions.
 
