@@ -1,0 +1,11 @@
+#+title: Notes on Rust References
+#+author: Errenil <errelinaaron@gmail.com>
+* ~std::*~ modules
+* Primitive types
+* Standard macros
+* The Rust Prelude
+#+BEGIN_QUOTE
+The /prelude/ is the list of things that Rust automatically imports into every Rust program.
+
+The difference between ‘the prelude’ and these other preludes is that they are not automatically use’d, and *must be imported manually*.
+#+END_QUOTE
