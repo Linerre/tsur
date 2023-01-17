@@ -2,6 +2,17 @@
 #+author: Errenil <errelinaaron@gmail.com>
 * ~std::*~ modules
 * Primitive types
+** Reference
+A reference in Rust is usually called "borrow".
+
+#+BEGIN_QUOTE
+*In most cases, references can be used much like the original value*. Field access, method calling, and indexing work the same (save for mutability rules, of course). In addition, the *comparison operators transparently defer* to the referent’s implementation, allowing references to be compared the same as owned values.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/std/primitive.reference.html][Primitive Type reference]] and see code [file:snippets/src/reference.rs::12]
+
+But sometimes, passing a reference would cause compile error! In such cases, consider
+~Copy~ or ~move~ the value behind the reference.
+
 * Standard macros
 * The Rust Prelude
 #+BEGIN_QUOTE
