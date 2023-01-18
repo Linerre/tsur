@@ -1,6 +1,18 @@
 #+title: Notes on Rust References
 #+author: Errenil <errelinaaron@gmail.com>
 
+* 2. Lexical structure
+** 2.4. Comments
+Besides line comments ~//~, Rust also provides block comments ~/* ... */~ and doc comments ~///~,
+among a couple of other comment styles.
+
+*** Non-doc commnets
+#+BEGIN_QUOTE
+Non-doc comments are interpreted as a form of whitespace.
+#+END_QUOTE
+from:[[Non-doc comments are interpreted as a form of whitespace.][Non-doc comments]]
+*** Doc comments
+Document the behavior of a mod, fn, or crate. See [[https://doc.rust-lang.org/reference/comments.html#doc-comments][Doc comments]].
 * 8. Statements and expressions
 ** 8.1. Statements
 ** 8.2. Expressions
