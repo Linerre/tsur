@@ -9,7 +9,7 @@ Rust functions by default returns the result of the last expression.
 If there isn't such an expression, the function returns ~()~ (a unit type)
 
 #+BEGIN_SRC rust
-// For a fn that has an explicit return type
+// <For a fn that has an explicit return type
 fn my_fn(arg: u64) -> u64 {
     if sth {
         4
@@ -65,7 +65,7 @@ A new, empty vector will not cause allocation:
 #+BEGIN_QUOTE
 if you construct a ~Vec~ with capacity 0 via ~Vec::new~, ~vec![]~, ~Vec::with_capacity(0)~, or by calling ~shrink_to_fit~ on an empty Vec, it will *not* allocate memory.
 
-~Vec~ will allocate if and only if ~mem::size_of::<T>() * capacity() > 0~.
+~Vec~ will allocate if and only if ~mem::size_of::<T>() * capacity() gt 0~.
 #+END_QUOTE
 from:[[https://doc.rust-lang.org/std/vec/struct.Vec.html#guarantees][Guarantees]]
 
