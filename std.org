@@ -1,6 +1,14 @@
 #+title: Notes on Rust References
 #+author: Errenil <errelinaaron@gmail.com>
 * ~std::*~ modules
+** Option
+*** ~is_none~ method
+No need to always use ~match~ to handle the ~None~ in an ~Option~. Use ~is_none()~
+#+BEGIN_SRC rust
+// There is NO such stuff as sth == None in Rust
+let x: Option<u32> = None;
+assert_eq!(x.is_none(), true);
+#+END_SRC
 * Primitive types
 ** Reference
 A reference in Rust is usually called "borrow".
