@@ -271,7 +271,16 @@ Remember to use ~collect~ method to *consume* the new iterator.
 ** ~iter()~ vs ~into_iter()~
 - ~iter()~ iterates over ~&T~, that's why ~collect()~ returns a ~Vec<&_>~
 - ~into_iter()~ iterates over ~T~
+* 15. Smart Pointers
+** 15.2 Treating Smart Pointers Like Regular Reference with Deref Trait
+*** Implicit Deref Coercisons with Functions and Methods
+#+BEGIN_QUOTE
+It happens automatically when we pass a reference to a particular type’s value as an argument to a function or method that doesn’t match the parameter type in the function or method definition.
 
+A sequence of calls to the ~deref~ method converts the type we provided into the type the parameter needs.
+#+END_QUOTE
+
+See also [[file:ref.org::38][~&~ in closures]] and [[file:snippets/src/reference.rs::4][code example]]
 * 21. Appendix
 ** 21.3 C - Derivable Traits
 *** ~Clone~
