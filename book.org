@@ -36,6 +36,15 @@ fn my_fn(arg: u64) {
     name
 }
 #+END_SRC
+* 4. Understanding Ownership
+** 4.3. The Slice Type
+#+BEGIN_QUOTE
+A slice is a kind of reference, so it does *not* have ownership.
+#+END_QUOTE
+from:[[https://doc.rust-lang.org/book/ch04-03-slices.html][The Slice Type]]
+
+Slices look simple and intuitive and can be useful. Just remember to use them.
+[[https://stackoverflow.com/a/26410607][How do I extract two mutable elements from a Vec in rust]]
 * 8. Common Collections
 ** 8.1 Storing Lists of Values with Vectors
 *** Vector index
