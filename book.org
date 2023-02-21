@@ -45,6 +45,24 @@ from:[[https://doc.rust-lang.org/book/ch04-03-slices.html][The Slice Type]]
 
 Slices look simple and intuitive and can be useful. Just remember to use them.
 [[https://stackoverflow.com/a/26410607][How do I extract two mutable elements from a Vec in rust]]
+* 5. Using Structs to Structure Related Data
+** 5.2. An Example Program Using Structs
+#+BEGIN_QUOTE
+as opposed to ~println!~, which takes a reference
+#+END_QUOTE
+
+So the below works:
+#+BEGIN_SRC rust
+fn main() {
+   let mut a = String::from("name");
+    println!(" word is {}", a);
+//                         ^^ println! takes a ref to a
+    a.clear(); // a here won't be affected
+
+    println!(" word is {}", a);
+    //                      ^^ so will here
+}
+#+END_SRC
 * 8. Common Collections
 ** 8.1 Storing Lists of Values with Vectors
 *** Vector index
