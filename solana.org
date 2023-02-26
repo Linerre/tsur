@@ -1,0 +1,12 @@
+#+Title: Devloping programs on solana
+
+* Solana Blockchain
+** Documentation
+** Rust crates
+*** solana-sdk
+#+BEGIN_QUOTE
+This is the base library for all *off-chain* programs that interact with Solana or otherwise operate on Solana data structures.
+
+On-chain programs instead use the ~solana-program~ crate ...
+#+END_QUOTE
+from:[[https://docs.rs/solana-sdk/latest/solana_sdk/][Crate solana_sdk]]
